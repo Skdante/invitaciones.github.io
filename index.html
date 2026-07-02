@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Graduación de Chara Uvania</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Caveat:wght@600;700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FBF6EA;
+    --navy:#1F2B4D;
+    --gold:#C89B3C;
+    --sage:#8FAE8B;
+    --coral:#E2836B;
+    --line:#E4DAC4;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--navy);
+    font-family:'Fredoka',sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  .page{
+    max-width:430px;
+    margin:0 auto;
+    padding:0 22px 60px;
+    position:relative;
+  }
+
+  /* decorative confetti dots */
+  .dot{position:absolute;border-radius:50%;opacity:.55;}
+
+  /* HERO */
+  .hero{
+    text-align:center;
+    padding-top:40px;
+    position:relative;
+  }
+  .eyebrow{
+    font-size:13px;
+    letter-spacing:.16em;
+    font-weight:600;
+    color:var(--coral);
+    text-transform:uppercase;
+  }
+  .cap-wrap{
+    margin:18px auto 10px;
+    width:120px;
+    height:120px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    animation:float 3.4s ease-in-out infinite;
+  }
+  @keyframes float{
+    0%,100%{transform:translateY(0) rotate(-4deg);}
+    50%{transform:translateY(-10px) rotate(4deg);}
+  }
+  .ribbon-badge{
+    display:inline-block;
+    background:var(--navy);
+    color:var(--cream);
+    font-size:12px;
+    letter-spacing:.14em;
+    font-weight:600;
+    padding:7px 18px;
+    border-radius:999px;
+    margin-top:6px;
+  }
+  .name{
+    font-family:'Caveat',cursive;
+    font-size:56px;
+    font-weight:700;
+    color:var(--navy);
+    margin:14px 0 2px;
+    line-height:1;
+  }
+  .sub{
+    font-size:14px;
+    color:#6a6a6a;
+    margin-bottom:22px;
+  }
+
+  .divider{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin:26px 0;
+  }
+  .divider .line{flex:1;height:1px;background:var(--line);}
+  .divider svg{flex-shrink:0;}
+
+  .quote{
+    text-align:center;
+    font-family:'Playfair Display',serif;
+    font-style:italic;
+    font-size:17px;
+    line-height:1.55;
+    color:var(--navy);
+    padding:0 6px;
+  }
+  .quote .who{
+    display:block;
+    margin-top:10px;
+    font-family:'Fredoka';
+    font-style:normal;
+    font-size:12px;
+    letter-spacing:.08em;
+    color:var(--sage);
+    text-transform:uppercase;
+  }
+
+  .invite-box{
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:22px;
+    padding:26px 20px;
+    text-align:center;
+    margin-top:26px;
+  }
+  .invite-box p{
+    font-size:15.5px;
+    line-height:1.6;
+    margin:0 0 14px;
+  }
+  .invite-box p:last-child{margin-bottom:0;}
+  .dynamic{
+    background:var(--cream);
+    border-radius:14px;
+    padding:12px 14px;
+    font-size:13.5px;
+    color:#555;
+  }
+  .dynamic strong{color:var(--coral);}
+
+  .date-block{
+    text-align:center;
+    margin-top:34px;
+  }
+  .date-row{
+    display:flex;
+    align-items:baseline;
+    justify-content:center;
+    gap:10px;
+    flex-wrap:wrap;
+  }
+  .date-row .day-word{
+    font-size:15px;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--coral);
+    font-weight:600;
+  }
+  .date-row .day-num{
+    font-family:'Playfair Display',serif;
+    font-weight:700;
+    font-size:44px;
+    color:var(--navy);
+  }
+  .date-row .month{
+    font-size:15px;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--coral);
+    font-weight:600;
+  }
+  .time-hour{
+    font-size:14px;
+    color:#777;
+    margin-top:2px;
+  }
+
+  .countdown-title{
+    text-align:center;
+    font-size:15px;
+    font-weight:600;
+    letter-spacing:.06em;
+    margin:26px 0 14px;
+  }
+  .countdown{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+  }
+  .cd-unit{
+    background:var(--navy);
+    color:var(--cream);
+    border-radius:14px;
+    width:68px;
+    padding:12px 0 8px;
+    text-align:center;
+  }
+  .cd-unit .num{
+    font-family:'Playfair Display',serif;
+    font-size:24px;
+    font-weight:600;
+    display:block;
+  }
+  .cd-unit .label{
+    font-size:9px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    opacity:.75;
+    display:block;
+    margin-top:3px;
+  }
+
+  /* TIMELINE */
+  .timeline-title{
+    text-align:center;
+    font-family:'Playfair Display',serif;
+    font-style:italic;
+    font-size:20px;
+    margin:46px 0 30px;
+  }
+  .timeline{
+    position:relative;
+    padding-left:46px;
+  }
+  .timeline::before{
+    content:'';
+    position:absolute;
+    left:17px;
+    top:6px;
+    bottom:6px;
+    width:2px;
+    background:var(--line);
+  }
+  .t-item{
+    position:relative;
+    margin-bottom:30px;
+    opacity:0;
+    transform:translateY(14px);
+    animation:reveal .6s ease forwards;
+  }
+  .t-item:last-child{margin-bottom:0;}
+  @keyframes reveal{to{opacity:1;transform:translateY(0);}}
+  .t-marker{
+    position:absolute;
+    left:-46px;
+    top:-2px;
+    width:36px;
+    height:36px;
+    border-radius:50%;
+    background:#fff;
+    border:2px solid var(--sage);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:17px;
+  }
+  .t-item.highlight .t-marker{border-color:var(--coral);}
+  .t-body{
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:12px 14px;
+  }
+  .t-item.highlight .t-body{
+    background:var(--navy);
+    color:var(--cream);
+    border-color:var(--navy);
+  }
+  .t-name{
+    font-size:15px;
+    font-weight:600;
+  }
+  .t-note{
+    font-size:12.5px;
+    color:#888;
+    margin-top:2px;
+  }
+  .t-item.highlight .t-note{color:#c9d2e6;}
+
+  /* LOCATION + RSVP */
+  .actions{
+    margin-top:40px;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+  }
+  .btn{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    text-decoration:none;
+    font-family:'Fredoka';
+    font-weight:600;
+    font-size:15px;
+    padding:15px 18px;
+    border-radius:999px;
+    border:1px solid transparent;
+    transition:transform .15s ease;
+  }
+  .btn:active{transform:scale(.97);}
+  .btn-location{
+    background:#fff;
+    color:var(--navy);
+    border-color:var(--line);
+  }
+  .btn-rsvp{
+    background:var(--sage);
+    color:#fff;
+  }
+  .rsvp-note{
+    text-align:center;
+    font-size:12px;
+    color:#888;
+    margin-top:2px;
+  }
+
+  .footer{
+    text-align:center;
+    margin-top:44px;
+    font-family:'Playfair Display',serif;
+    font-style:italic;
+    font-size:17px;
+    color:var(--navy);
+  }
+  .footer .tiny{
+    display:block;
+    font-family:'Fredoka';
+    font-style:normal;
+    font-size:11px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin-top:6px;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- decorative dots -->
+  <div class="dot" style="width:8px;height:8px;background:var(--gold);top:12px;left:8px;"></div>
+  <div class="dot" style="width:6px;height:6px;background:var(--sage);top:30px;right:14px;"></div>
+  <div class="dot" style="width:5px;height:5px;background:var(--coral);top:70px;left:26px;"></div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="eyebrow">Un día especial está por llegar</div>
+
+    <div class="cap-wrap">
+      <svg width="100" height="100" viewBox="0 0 100 100">
+        <polygon points="50,18 92,38 50,58 8,38" fill="#1F2B4D"/>
+        <polygon points="50,58 82,44 82,60 50,72 18,60 18,44" fill="#26355e"/>
+        <rect x="47" y="58" width="6" height="26" fill="#C89B3C"/>
+        <circle cx="50" cy="86" r="6" fill="#C89B3C"/>
+        <circle cx="90" cy="38" r="3.2" fill="#C89B3C"/>
+      </svg>
+    </div>
+
+    <div class="ribbon-badge">Generación 2026</div>
+    <div class="name">Chara Uvania</div>
+    <div class="sub">se gradúa de kínder 🎓</div>
+  </section>
+
+  <div class="divider">
+    <div class="line"></div>
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-4.35-9.5-8.6C.5 8.5 2.6 4.8 6.3 4.4c2-.2 3.9.8 5.7 3 1.8-2.2 3.7-3.2 5.7-3 3.7.4 5.8 4.1 3.8 8C19 16.65 12 21 12 21z" fill="#E2836B"/></svg>
+    <div class="line"></div>
+  </div>
+
+  <div class="quote">
+    “Cada gran camino comienza con un primer pasito, y hoy celebramos el suyo.”
+    <span class="who">Con cariño, sus papás</span>
+  </div>
+
+  <div class="invite-box">
+    <p>¡Están cordialmente invitados a celebrar la graduación de kínder de <strong>Chara</strong>!</p>
+    <div class="dynamic">
+      <strong>Ven listo(a) para nadar 🏊</strong> — habrá alberca para todos, ¡no olvides tu traje de baño y toalla!
+    </div>
+  </div>
+
+  <div class="date-block">
+    <div class="date-row">
+      <span class="day-word">Lunes</span>
+      <span class="day-num">27</span>
+      <span class="month">Julio</span>
+    </div>
+    <div class="time-hour">2:00 PM · Brecha 3 S/N, Monte Kristal</div>
+  </div>
+
+  <div class="countdown-title">¿Cuánto falta?</div>
+  <div class="countdown" id="countdown">
+    <div class="cd-unit"><span class="num" id="cd-d">00</span><span class="label">Días</span></div>
+    <div class="cd-unit"><span class="num" id="cd-h">00</span><span class="label">Horas</span></div>
+    <div class="cd-unit"><span class="num" id="cd-m">00</span><span class="label">Min</span></div>
+    <div class="cd-unit"><span class="num" id="cd-s">00</span><span class="label">Seg</span></div>
+  </div>
+
+  <!-- TIMELINE -->
+  <div class="timeline-title">Así será el día</div>
+  <div class="timeline">
+    <div class="t-item" style="animation-delay:.05s">
+      <div class="t-marker">🏊</div>
+      <div class="t-body"><div class="t-name">Alberca</div></div>
+    </div>
+    <div class="t-item" style="animation-delay:.1s">
+      <div class="t-marker">🌽</div>
+      <div class="t-body"><div class="t-name">Snack</div><div class="t-note">Elotes</div></div>
+    </div>
+    <div class="t-item highlight" style="animation-delay:.15s">
+      <div class="t-marker">🎁</div>
+      <div class="t-body"><div class="t-name">Juegos</div><div class="t-note">Participa y gana sorpresas</div></div>
+    </div>
+    <div class="t-item" style="animation-delay:.2s">
+      <div class="t-marker">🍽️</div>
+      <div class="t-body"><div class="t-name">Comida</div></div>
+    </div>
+    <div class="t-item" style="animation-delay:.25s">
+      <div class="t-marker">🍦</div>
+      <div class="t-body"><div class="t-name">Carrito</div><div class="t-note">Heladitos</div></div>
+    </div>
+    <div class="t-item" style="animation-delay:.3s">
+      <div class="t-marker">🪗</div>
+      <div class="t-body"><div class="t-name">Baile</div><div class="t-note">🪗🎸</div></div>
+    </div>
+    <div class="t-item" style="animation-delay:.35s">
+      <div class="t-marker">🧁</div>
+      <div class="t-body"><div class="t-name">Postres</div></div>
+    </div>
+  </div>
+
+  <div class="actions">
+    <a class="btn btn-location" target="_blank"
+       href="https://www.google.com/maps/search/?api=1&query=Brecha+3+S%2FN+Monte+Kristal">
+       📍 Ver ubicación
+    </a>
+    <a class="btn btn-rsvp" target="_blank"
+       href="https://api.whatsapp.com/send?text=%C2%A1Confirmo%20mi%20asistencia%20a%20la%20graduaci%C3%B3n%20de%20Chara!%20%F0%9F%8E%93">
+       💬 Confirmar asistencia
+    </a>
+    <div class="rsvp-note">Este botón abrirá WhatsApp para elegir el contacto — cuando tengas el número, te ayudo a fijarlo directo.</div>
+  </div>
+
+  <div class="footer">
+    ¡No falta nada, nos vemos ahí!
+    <span class="tiny">Chara · Generación 2026</span>
+  </div>
+
+</div>
+
+<script>
+  const target = new Date("2026-07-27T14:00:00-06:00").getTime();
+
+  function tick(){
+    const now = Date.now();
+    let diff = target - now;
+    if(diff < 0) diff = 0;
+
+    const d = Math.floor(diff / (1000*60*60*24));
+    const h = Math.floor((diff / (1000*60*60)) % 24);
+    const m = Math.floor((diff / (1000*60)) % 60);
+    const s = Math.floor((diff / 1000) % 60);
+
+    document.getElementById('cd-d').textContent = String(d).padStart(2,'0');
+    document.getElementById('cd-h').textContent = String(h).padStart(2,'0');
+    document.getElementById('cd-m').textContent = String(m).padStart(2,'0');
+    document.getElementById('cd-s').textContent = String(s).padStart(2,'0');
+  }
+  tick();
+  setInterval(tick, 1000);
+</script>
+</body>
+</html>
